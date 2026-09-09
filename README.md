@@ -25,6 +25,6 @@
 
 ---
 
-## 🔗 Đường Dẫn Liên Kết
+## 🔗 Link
 
-- **Demo Website / Live App:** [Link Website của bạn]
+- **Link GitHub:** https://github.com/sathaphonenonkeointhichak-lab/Travel-Planner.git
