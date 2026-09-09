@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Explore</title>
+<link rel="stylesheet" href="explore.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link active">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search">
+        <img src="images/icon-search.png" alt="Search">
+      </button>
+    </div>
+
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="Profile">
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Toolbar: search kết quả + filter dropdown -->
+  <section class="explore-toolbar">
+    <div class="filter-dropdown">
+      <button id="filterToggleBtn" class="filter-toggle-btn" type="button">
+        <span id="filterToggleLabel">All</span>
+        <img src="images/icon-chevron-down.png" alt="">
+      </button>
+      <div id="filterMenu" class="filter-menu hidden">
+        <button class="filter-option active" data-filter="all" type="button">All</button>
+        <button class="filter-option" data-filter="hotel" type="button">Hotel</button>
+        <button class="filter-option" data-filter="attraction" type="button">Places</button>
+        <button class="filter-option" data-filter="cafe" type="button">Cafe</button>
+        <button class="filter-option" data-filter="restaurant" type="button">Restaurant</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kết quả Explore, render động bởi explore.js -->
+  <section id="exploreResults" class="explore-results">
+    <p id="noResultsMsg" class="no-results hidden">No results found</p>
+  </section>
+
+</main>
+
+<!-- Modal: Add to Trip -->
+<div id="addToTripModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Add to Trip</h3>
+      <button id="closeAddToTripModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div id="tripStep" class="modal-step">
+      <p class="modal-label">Choose a trip:</p>
+      <div id="tripListContainer" class="modal-list">
+        <p class="placeholder-text">Đang tải danh sách trip...</p>
+      </div>
+      <button id="createNewTripBtn" class="btn-primary hidden" type="button">+ Create New Trip</button>
+    </div>
+
+    <div id="dayStep" class="modal-step hidden">
+      <p class="modal-label">Choose a day:</p>
+      <div id="dayListContainer" class="modal-list"></div>
+      <button id="backToTripStep" class="btn-secondary" type="button">&larr; Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup nhỏ cho menu ⋮ của từng item (Share / Delete) -->
+<div id="itemMenuPopup" class="item-menu-popup hidden">
+  <button class="item-menu-option" data-action="share" type="button">Share</button>
+  <button class="item-menu-option" data-action="delete" type="button">Delete</button>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Home</h4>
+    <a href="home.html">Restaurant</a>
+    <a href="home.html">Recently viewed and upcoming</a>
+    <a href="home.html">Recommend</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="explore.js"></script>
+</body>
+</html>

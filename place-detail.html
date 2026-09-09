@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Place Detail</title>
+<link rel="stylesheet" href="place-detail.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search">
+        <img src="images/icon-search.png" alt="Search">
+      </button>
+    </div>
+
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="Profile">
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <button id="backBtn" class="back-btn" type="button">
+    <img src="images/icon-back.png" alt=""> Back
+  </button>
+
+  <!-- Thông tin chính: gallery + info -->
+  <section class="detail-top">
+    <div class="gallery">
+      <img id="mainImage" class="main-image" src="" alt="">
+      <div class="thumbnail-list" id="thumbnailList"></div>
+    </div>
+
+    <div class="detail-info">
+      <h1 id="placeName"></h1>
+      <div id="placeRating" class="place-rating"></div>
+      <p id="placeAddress" class="place-address"></p>
+      <p id="placeShortInfo" class="place-short-info"></p>
+      <p id="placePrice" class="place-price"></p>
+
+      <div class="detail-actions">
+        <button id="favoriteBtn" class="favorite-btn" type="button">
+          <span class="heart-icon">&#9825;</span> Favorite
+        </button>
+        <button id="addToTripBtn" class="btn-primary" type="button">+ Add to Trip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section">
+    <h2 class="section-title">About</h2>
+    <p id="aboutDescription" class="about-description"></p>
+  </section>
+
+  <!-- Information (khác nhau theo loại địa điểm) -->
+  <section class="info-section">
+    <h2 class="section-title" id="infoTitle">Information</h2>
+    <div id="infoList" class="info-list"></div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews-section">
+    <h2 class="section-title">Reviews</h2>
+
+    <div id="reviewsSummary" class="reviews-summary"></div>
+
+    <div id="writeReviewArea" class="write-review-area">
+      <button id="writeReviewBtn" class="btn-secondary" type="button">Write a Review</button>
+    </div>
+
+    <div id="loginRequiredMsg" class="login-required hidden">
+      Vui lòng <a href="login.html">đăng nhập</a> để viết review.
+    </div>
+
+    <form id="reviewForm" class="review-form hidden">
+      <p class="modal-label">Rating</p>
+      <div class="star-input" id="starInput">
+        <button type="button" class="star-input-btn" data-value="1">&#9733;</button>
+        <button type="button" class="star-input-btn" data-value="2">&#9733;</button>
+        <button type="button" class="star-input-btn" data-value="3">&#9733;</button>
+        <button type="button" class="star-input-btn" data-value="4">&#9733;</button>
+        <button type="button" class="star-input-btn" data-value="5">&#9733;</button>
+      </div>
+
+      <textarea id="reviewComment" class="review-textarea" placeholder="Write your review..." rows="3"></textarea>
+
+      <p id="reviewError" class="form-error hidden"></p>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary" id="submitReviewBtn">Submit Review</button>
+        <button type="button" class="btn-secondary" id="cancelReviewBtn">Cancel</button>
+      </div>
+    </form>
+
+    <div class="review-list" id="reviewList"></div>
+  </section>
+
+</main>
+
+<!-- Modal: Add to Trip -->
+<div id="addToTripModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Add to Trip</h3>
+      <button id="closeAddToTripModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div id="tripStep" class="modal-step">
+      <p class="modal-label">Choose a trip:</p>
+      <div id="tripListContainer" class="modal-list">
+        <p class="placeholder-text">Đang tải danh sách trip...</p>
+      </div>
+      <button id="createNewTripBtn" class="btn-primary hidden" type="button">+ Create New Trip</button>
+    </div>
+
+    <div id="dayStep" class="modal-step hidden">
+      <p class="modal-label">Choose a day:</p>
+      <div id="dayListContainer" class="modal-list"></div>
+      <button id="backToTripStep" class="btn-secondary" type="button">&larr; Back</button>
+    </div>
+
+    <div id="addedStep" class="modal-step hidden">
+      <p class="added-message">Place added to your trip.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="place-detail.js"></script>
+</body>
+</html>

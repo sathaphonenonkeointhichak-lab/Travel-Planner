@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Register</title>
+<link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+  <div class="header-right">
+    <a href="login.html" class="btn-secondary-sm">Login</a>
+  </div>
+</header>
+
+<main class="auth-main">
+  <div class="auth-card">
+    <h1 class="auth-title">Create Account</h1>
+    <p class="auth-subtitle">Create your account to start planning your trips.</p>
+
+    <form id="registerForm" novalidate>
+
+      <label for="fullName">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        name="full_name"
+        placeholder="Enter your full name"
+        autocomplete="name"
+        required
+      >
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="At least 6 characters"
+        autocomplete="new-password"
+        required
+      >
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirm_password"
+        placeholder="Confirm your password"
+        autocomplete="new-password"
+        required
+      >
+
+      <p id="registerError" class="field-error hidden"></p>
+
+      <button type="submit" id="registerSubmitBtn" class="btn-primary-full">Create Account</button>
+    </form>
+
+    <p class="auth-switch">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="register.js"></script>
+</body>
+</html>

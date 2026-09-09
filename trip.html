@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Trip</title>
+<link rel="stylesheet" href="trip.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search"><img src="images/icon-search.png" alt=""></button>
+    </div>
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="">
+    </button>
+  </div>
+</header>
+
+<main class="trip-main">
+
+  <!-- Top bar: Back / Share / More -->
+  <div class="trip-topbar">
+    <button id="backBtn" class="back-btn" type="button">
+      <img src="images/icon-back.png" alt=""> Back
+    </button>
+
+    <div class="trip-topbar-actions">
+      <button id="shareBtn" class="share-btn" type="button">
+        <img src="images/icon-share.png" alt=""> Share
+      </button>
+      <div class="trip-menu-dropdown">
+        <button id="tripMenuBtn" class="menu-dots-btn" type="button" aria-label="More options">&#8942;</button>
+        <div id="tripMenuPopup" class="dropdown-popup hidden">
+          <button type="button" class="dropdown-option" data-action="rename">Rename Trip</button>
+          <button type="button" class="dropdown-option" data-action="edit-dates">Edit Dates</button>
+          <button type="button" class="dropdown-option danger" data-action="delete">Delete Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trip Header Card -->
+  <section class="trip-header-card">
+    <div class="cover-wrapper">
+      <img id="coverImage" class="cover-image" src="images/trip-cover-placeholder.jpg" alt="Trip cover">
+      <button id="editCoverBtn" class="edit-cover-btn" type="button" aria-label="Edit cover">
+        <img src="images/icon-edit.png" alt="">
+      </button>
+
+      <div class="trip-info-overlay">
+        <h1 id="tripTitle" class="trip-title">Trip to HCM City</h1>
+        <div class="trip-meta">
+          <img src="images/icon-calendar.png" alt="">
+          <span id="tripDates">8/12 - 8/14</span>
+        </div>
+      </div>
+
+      <div class="trip-members-overlay" id="tripMembersOverlay">
+        <div class="member-avatars" id="memberAvatars"></div>
+        <button id="inviteFromTripBtn" class="invite-avatar-btn" type="button" aria-label="Invite tripmates">
+          <img src="images/icon-friends.png" alt="">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nội dung chính: 2 cột -->
+  <div class="trip-content">
+
+    <!-- CỘT TRÁI -->
+    <div class="trip-left-column">
+
+      <!-- Place to visit -->
+      <section class="panel place-to-visit-panel">
+        <div class="panel-header">
+          <h2>Place to visit</h2>
+          <button class="panel-menu-btn" type="button" aria-label="More">&#8942;</button>
+        </div>
+        <div id="placeToVisitList" class="simple-place-list"></div>
+      </section>
+
+      <!-- Itinerary -->
+      <section class="panel itinerary-panel">
+        <div class="panel-header">
+          <h2>Itinerary</h2>
+          <span class="itinerary-range" id="itineraryRange"></span>
+        </div>
+        <div id="dayList" class="day-list"></div>
+      </section>
+
+      <!-- Budgeting -->
+      <section class="panel budgeting-panel">
+        <div class="panel-header">
+          <h2>Budgeting</h2>
+          <button id="addExpenseBtn" class="btn-primary-sm" type="button">+ Add expense</button>
+        </div>
+
+        <form id="addExpenseForm" class="add-expense-form hidden">
+          <input type="text" id="expenseNote" placeholder="Nội dung chi phí">
+          <input type="number" id="expenseAmount" placeholder="Số tiền (VND)" min="0">
+          <div class="expense-form-actions">
+            <button type="submit" class="btn-primary-sm">Add</button>
+            <button type="button" id="cancelExpenseBtn" class="btn-secondary-sm">Cancel</button>
+          </div>
+        </form>
+
+        <div id="expenseList" class="expense-list"></div>
+        <div class="expense-total-row">
+          <span>Tổng chi phí</span>
+          <span id="expenseTotal" class="expense-total">₫ 0</span>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CỘT PHẢI -->
+    <div class="trip-right-column">
+      <section class="panel choose-place-panel">
+        <div class="choose-place-toolbar">
+          <div class="search-box">
+            <input type="text" id="choosePlaceSearch" placeholder="Search">
+            <button type="button" aria-label="Search"><img src="images/icon-search.png" alt=""></button>
+          </div>
+          <div class="filter-dropdown">
+            <button id="choosePlaceFilterBtn" class="filter-toggle-btn" type="button">
+              <span id="choosePlaceFilterLabel">All</span>
+              <img src="images/icon-chevron-down.png" alt="">
+            </button>
+            <div id="choosePlaceFilterMenu" class="filter-menu hidden">
+              <button type="button" class="filter-option active" data-filter="all">All</button>
+              <button type="button" class="filter-option" data-filter="hotel">Hotel</button>
+              <button type="button" class="filter-option" data-filter="attraction">Place</button>
+              <button type="button" class="filter-option" data-filter="cafe">Cafe</button>
+              <button type="button" class="filter-option" data-filter="restaurant">Restaurant</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="selected-day-hint">Đang thêm vào: <strong id="selectedDayLabel">-</strong></p>
+
+        <div id="choosePlaceList" class="choose-place-list">
+          <p class="placeholder-text" id="choosePlaceNoResults">No results found</p>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Popup: Share Trip -->
+<div id="shareModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Share Trip</h3>
+      <button id="closeShareModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="share-link-row">
+      <input type="text" id="shareLinkInput" readonly>
+      <button id="copyShareLinkBtn" class="btn-secondary-sm" type="button">Copy link</button>
+    </div>
+
+    <div class="invite-input-row">
+      <input type="email" id="shareEmailInput" placeholder="Invite by email or user">
+      <select id="sharePermissionSelect">
+        <option value="edit" selected>Can edit</option>
+        <option value="view">View only</option>
+      </select>
+      <button id="shareInviteBtn" class="btn-primary-sm" type="button">Invite</button>
+    </div>
+    <p class="field-error hidden" id="shareError"></p>
+  </div>
+</div>
+
+<script src="trip.js"></script>
+</body>
+</html>

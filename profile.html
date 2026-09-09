@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Profile</title>
+<link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search places, food, hotels...">
+      <button id="searchBtn" type="button" aria-label="Search"><img src="images/icon-search.png" alt=""></button>
+    </div>
+    <div class="profile-menu-wrapper">
+      <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+        <img id="headerAvatar" src="images/avatar-placeholder.png" alt="">
+      </button>
+      <div id="profileHeaderMenu" class="profile-header-menu hidden">
+        <a href="profile.html" class="profile-header-menu-item">My Profile</a>
+        <a href="#" class="profile-header-menu-item" id="settingLink">Setting</a>
+        <button type="button" class="profile-header-menu-item logout-item" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="profile-main">
+
+  <div class="profile-layout">
+
+    <!-- Card trái: thông tin cá nhân -->
+    <section class="profile-card">
+      <img id="profileAvatar" class="profile-avatar" src="images/avatar-placeholder.png" alt="">
+      <h2 id="profileName" class="profile-name"></h2>
+      <p id="profileEmail" class="profile-email"></p>
+
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <span id="followersCount" class="stat-number">0</span>
+          <span class="stat-label">FOLLOWERS</span>
+        </div>
+        <div class="profile-stat">
+          <span id="followingCount" class="stat-number">0</span>
+          <span class="stat-label">FOLLOWING</span>
+        </div>
+      </div>
+
+      <div class="profile-card-actions">
+        <button id="editProfileBtn" class="btn-edit" type="button">
+          <img src="images/icon-edit.png" alt=""> Edit
+        </button>
+        <button id="shareProfileBtn" class="btn-share" type="button">
+          <img src="images/icon-share.png" alt=""> Share
+        </button>
+      </div>
+
+      <!-- Form Edit Profile (ẩn mặc định) -->
+      <div id="editProfileForm" class="edit-profile-form hidden">
+        <label>Tên hiển thị</label>
+        <input type="text" id="editNameInput" placeholder="Tên của bạn">
+
+        <label>Đường dẫn ảnh đại diện</label>
+        <input type="text" id="editAvatarInput" placeholder="images/avatar-placeholder.png">
+
+        <p class="field-error hidden" id="editProfileError"></p>
+
+        <div class="edit-form-actions">
+          <button id="saveProfileBtn" class="btn-primary-sm" type="button">Save</button>
+          <button id="cancelProfileEditBtn" class="btn-secondary-sm" type="button">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card phải: tabs + nội dung -->
+    <section class="profile-content-card">
+      <div class="profile-tabs">
+        <button type="button" class="profile-tab active" data-tab="trips">Trip plans</button>
+        <button type="button" class="profile-tab" data-tab="guides">Guides</button>
+        <button type="button" class="profile-tab" data-tab="favorites">Favorite</button>
+      </div>
+
+      <div class="tab-panels">
+        <div id="tripsPanel" class="tab-panel">
+          <div id="tripsGrid" class="cards-grid"></div>
+        </div>
+        <div id="guidesPanel" class="tab-panel hidden">
+          <div id="guidesGrid" class="cards-grid"></div>
+        </div>
+        <div id="favoritesPanel" class="tab-panel hidden">
+
+         <h3 class="favorite-subtitle">Places</h3>
+         <div id="favoritePlacesGrid" class="cards-grid"></div>
+
+         <h3 class="favorite-subtitle">Guides</h3>
+          <div id="favoriteGuidesGrid" class="cards-grid"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Popup menu nhỏ cho nút "..." trên mỗi card -->
+<div id="cardMenuPopup" class="item-menu-popup hidden"></div>
+
+<!-- Modal: Share Profile -->
+<div id="shareProfileModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Share Profile</h3>
+      <button id="closeShareProfileModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="share-link-row">
+      <input type="text" id="shareProfileLinkInput" readonly>
+      <button id="copyShareProfileLinkBtn" class="btn-secondary-sm" type="button">Copy link</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+  <div class="footer-col">
+    <h4>Home</h4>
+    <a href="home.html">Recommend</a>
+    <a href="home.html">Recently viewed and upcoming</a>
+    <a href="home.html">Popular destinations</a>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="profile.js"></script>
+</body>
+</html>

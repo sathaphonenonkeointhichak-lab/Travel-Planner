@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Plan a New Trip</title>
+<link rel="stylesheet" href="new-trip.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link">Travel Guides</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search">
+        <img src="images/icon-search.png" alt="Search">
+      </button>
+    </div>
+
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="Profile">
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="new-trip-section">
+    <h1 class="page-title">Plan a new trip</h1>
+
+    <form id="newTripForm" novalidate>
+
+      <!-- Loại: Trip hoặc Write Guide (mục 1.1) -->
+      <div class="form-group">
+        <label>What are you creating?</label>
+        <div class="type-toggle" id="typeToggle">
+          <button type="button" class="type-toggle-btn active" data-type="trip">Trip</button>
+          <button type="button" class="type-toggle-btn" data-type="guide">Write Guide</button>
+        </div>
+      </div>
+
+      <!-- Trip Name -->
+      <div class="form-group">
+        <label for="tripName">Trip name</label>
+        <input type="text" id="tripName" name="tripName" placeholder="e.g. Trip to HCM City">
+        <p class="field-error hidden" id="tripNameError">Vui lòng nhập tên chuyến đi.</p>
+      </div>
+
+      <!-- Destination -->
+      <div class="form-group">
+        <label for="destinationInput">Where to?</label>
+        <input type="text" id="destinationInput" name="destination" placeholder="e.g. Ho Chi Minh City">
+      </div>
+
+      <!-- Dates (optional) -->
+      <div class="form-group">
+        <label>Dates (optional)</label>
+        <div class="dates-row">
+          <div class="date-field">
+            <input type="date" id="startDate" name="startDate">
+          </div>
+          <span class="date-separator">&rarr;</span>
+          <div class="date-field">
+            <input type="date" id="endDate" name="endDate">
+          </div>
+        </div>
+        <p class="field-error hidden" id="datesError"></p>
+      </div>
+
+      <!-- Invite + Privacy -->
+      <div class="form-row-actions" id="tripOnlyRow">
+        <button type="button" id="inviteTripmatesBtn" class="link-btn">
+          <span class="plus-icon">+</span> Invite tripmates
+          <span id="inviteCountBadge" class="invite-count-badge hidden">0</span>
+        </button>
+
+        <div class="privacy-static" title="Trip mới luôn ở chế độ Private - chỉ người được mời mới xem được">
+          <img src="images/icon-private.png" alt="">
+          <span>Private</span>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-submit-area">
+        <button type="submit" id="startPlanningBtn" class="btn-primary">Start planning</button>
+        <button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+      </div>
+
+      <p class="field-error hidden" id="formGeneralError"></p>
+    </form>
+  </section>
+</main>
+
+<!-- Modal: Invite Tripmates -->
+<div id="inviteModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Invite tripmates</h3>
+      <button id="closeInviteModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div id="inviteAddedList" class="invite-added-list">
+      <p class="placeholder-text" id="inviteEmptyMsg">Chưa có ai được mời.</p>
+    </div>
+
+    <div class="invite-input-row">
+      <input type="email" id="inviteEmailInput" placeholder="Invite by email or user">
+      <select id="invitePermissionSelect">
+        <option value="edit" selected>Can edit</option>
+        <option value="view">View only</option>
+      </select>
+      <button type="button" id="addInviteBtn" class="btn-primary">Add</button>
+    </div>
+
+    <p class="field-error hidden" id="inviteError"></p>
+
+    <button type="button" id="doneInviteBtn" class="btn-secondary done-invite-btn">Done</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="new-trip.js"></script>
+</body>
+</html>

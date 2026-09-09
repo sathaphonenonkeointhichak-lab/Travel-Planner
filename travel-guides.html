@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Travel Guides</title>
+<link rel="stylesheet" href="travel-guides.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link active">Travel Guides</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search"><img src="images/icon-search.png" alt=""></button>
+    </div>
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="">
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Intro + Search + Filter -->
+  <section class="guides-intro">
+    <h1 class="guides-heading">Explore travel guides and itineraries</h1>
+
+    <div class="guides-search-box">
+      <input type="text" id="guideSearchInput" placeholder="Search for a destination or guide">
+      <button id="guideSearchBtn" type="button" aria-label="Search">
+        <img src="images/icon-search.png" alt="">
+      </button>
+    </div>
+
+    <div class="guides-filter-row" id="guidesFilterRow">
+      <button type="button" class="filter-pill active" data-filter="all">All</button>
+      <button type="button" class="filter-pill" data-filter="hcm">HCM</button>
+      <button type="button" class="filter-pill" data-filter="vungtau">Vung Tau</button>
+      <button type="button" class="filter-pill" data-filter="binhduong">Binh Duong</button>
+    </div>
+  </section>
+
+  <!-- Recent guides -->
+  <section class="recent-guides-section">
+    <h2 class="section-title">Recent guides</h2>
+    <div id="guidesGrid" class="guides-grid"></div>
+    <p id="noGuidesResult" class="no-results hidden">No travel guides found.</p>
+  </section>
+
+</main>
+
+<!-- Popup menu nhỏ cho nút ... trên mỗi card (Share, và Edit/Delete nếu là guide của chính user) -->
+<div id="guideMenuPopup" class="item-menu-popup hidden"></div>
+
+<!-- Thông báo yêu cầu đăng nhập (khi Like mà chưa đăng nhập) -->
+<div id="loginRequiredToast" class="login-required-toast hidden">
+  Vui lòng <a href="login.html">đăng nhập</a> để thực hiện thao tác này.
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="travel-guides.js"></script>
+</body>
+</html>

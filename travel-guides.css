@@ -1,0 +1,302 @@
+/* ==========================================================
+   TRAVEL GUIDES PAGE STYLES - Travel Planner
+   ========================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+.hidden { display: none !important; }
+
+/* ---------------- Header (đồng bộ) ---------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.logo { font-size: 20px; font-weight: 700; }
+.main-nav { display: flex; gap: 32px; }
+.nav-link { font-size: 15px; color: #333; }
+.nav-link.active, .nav-link:hover { color: #7a3b3b; font-weight: 600; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+.search-box {
+  display: flex; align-items: center;
+  background-color: #f2f2f2; border-radius: 20px;
+  padding: 8px 14px; gap: 8px;
+}
+.search-box input { border: none; background: transparent; outline: none; font-size: 14px; width: 220px; }
+.search-box button { border: none; background: transparent; cursor: pointer; padding: 0; }
+.search-box img { width: 16px; height: 16px; }
+
+.profile-btn { border: none; background: transparent; cursor: pointer; padding: 0; }
+.profile-btn img { width: 34px; height: 34px; border-radius: 50%; }
+
+/* ---------------- Main layout ---------------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 40px 60px;
+}
+
+.section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.placeholder-text { color: #888; font-size: 14px; }
+
+/* ---------------- Intro / search / filter ---------------- */
+.guides-intro {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 28px;
+}
+
+.guides-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.guides-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 420px;
+  margin: 0 auto 18px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 16px;
+}
+
+.guides-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+}
+
+.guides-search-box button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.guides-search-box img { width: 14px; height: 14px; }
+
+.guides-filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 8px 18px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.filter-pill:hover { background-color: #f5f5f5; }
+
+.filter-pill.active {
+  background-color: #7a3b3b;
+  color: #fff;
+  border-color: #7a3b3b;
+  font-weight: 600;
+}
+
+/* ---------------- Guides grid ---------------- */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.no-results {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+/* ---------------- Guide card ---------------- */
+.guide-card { cursor: pointer; }
+
+.guide-cover-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.guide-cover {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.guide-card-menu-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  cursor: pointer;
+}
+.guide-card-menu-btn:hover { background-color: #fff; }
+
+.guide-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.guide-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.guide-author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #555;
+}
+
+.guide-author img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.guide-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #888;
+}
+
+.guide-stats span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.guide-stats img { width: 12px; height: 12px; }
+
+.guide-like-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.guide-like-btn.liked img {
+  filter: invert(21%) sepia(90%) saturate(4000%) hue-rotate(340deg);
+}
+
+/* ---------------- Item menu popup (Share) ---------------- */
+.item-menu-popup {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 100px;
+  z-index: 50;
+}
+.item-menu-popup.hidden { display: none; }
+
+.item-menu-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.item-menu-option:hover { background-color: #f2f2f2; }
+.item-menu-option.danger { color: #c62828; }
+
+/* ---------------- Toast yêu cầu đăng nhập ---------------- */
+.login-required-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 200;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.login-required-toast a { color: #ffb3b3; font-weight: 600; text-decoration: underline; }
+.login-required-toast.hidden { display: none; }
+
+/* ---------------- Footer (đồng bộ) ---------------- */
+.site-footer {
+  background-color: #7a3b3b;
+  color: #f5eaea;
+  padding: 48px 40px 24px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+.footer-col h3, .footer-col h4 { margin-bottom: 14px; font-weight: 700; }
+.footer-col a { display: block; font-size: 13px; color: #f0dede; margin-bottom: 8px; }
+.footer-col a:hover { text-decoration: underline; }
+.footer-contact { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 8px; }
+.footer-contact img { width: 14px; height: 14px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 12px; }
+.footer-socials img { width: 18px; height: 18px; }
+.footer-bottom {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 24px;
+  padding-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  color: #ecdcdc;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+  .guides-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .site-header { flex-wrap: wrap; gap: 12px; }
+  .main-nav { order: 3; width: 100%; justify-content: center; }
+  .guides-grid { grid-template-columns: 1fr; }
+  .site-footer { grid-template-columns: 1fr; }
+}

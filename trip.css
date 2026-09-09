@@ -1,0 +1,711 @@
+/* ==========================================================
+   TRIP PAGE STYLES - Travel Planner
+   Màu chính: đỏ nâu (#7a3b3b) - đồng bộ Footer
+   Màu accent nút: xanh (#3b6fe0) - đồng bộ các trang khác
+   ========================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1f1f1f;
+  background-color: #f7f6f5;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+.hidden { display: none !important; }
+.placeholder-text { color: #999; font-size: 13px; }
+
+/* ---------------- Header (đồng bộ) ---------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.logo { font-size: 20px; font-weight: 700; }
+.main-nav { display: flex; gap: 32px; }
+.nav-link { font-size: 15px; color: #333; }
+.nav-link:hover { color: #7a3b3b; font-weight: 600; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+.search-box {
+  display: flex; align-items: center;
+  background-color: #f2f2f2; border-radius: 20px;
+  padding: 8px 14px; gap: 8px;
+}
+.search-box input { border: none; background: transparent; outline: none; font-size: 14px; width: 200px; }
+.search-box button { border: none; background: transparent; cursor: pointer; padding: 0; }
+.search-box img { width: 16px; height: 16px; }
+
+.profile-btn { border: none; background: transparent; cursor: pointer; padding: 0; }
+.profile-btn img { width: 34px; height: 34px; border-radius: 50%; }
+
+/* ---------------- Main layout ---------------- */
+.trip-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 32px 60px;
+}
+
+/* ---------------- Top bar ---------------- */
+.trip-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.back-btn img { width: 12px; height: 12px; }
+.back-btn:hover { background-color: #f2f2f2; }
+
+.trip-topbar-actions { display: flex; align-items: center; gap: 10px; }
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee2e2;
+  color: #7a3b3b;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.share-btn img { width: 13px; height: 13px; }
+.share-btn:hover { background-color: #e2d2d2; }
+
+.trip-menu-dropdown { position: relative; }
+
+.menu-dots-btn {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.menu-dots-btn:hover { background-color: #f2f2f2; }
+
+.dropdown-popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  min-width: 160px;
+  z-index: 30;
+  overflow: hidden;
+}
+.dropdown-popup.hidden { display: none; }
+
+.dropdown-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.dropdown-option:hover { background-color: #f5f5f5; }
+.dropdown-option.danger { color: #c62828; }
+
+/* ---------------- Trip header card ---------------- */
+.trip-header-card { margin-bottom: 24px; }
+
+.cover-wrapper {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.edit-cover-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-cover-btn img { width: 16px; height: 16px; }
+.edit-cover-btn:hover { background-color: #fff; }
+
+.trip-info-overlay {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  max-width: 280px;
+}
+
+.trip-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1f1f1f;
+}
+
+.trip-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+}
+.trip-meta img { width: 13px; height: 13px; }
+
+.trip-members-overlay {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.member-avatars { display: flex; }
+.member-avatars img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+  object-fit: cover;
+}
+.member-avatars img:first-child { margin-left: 0; }
+
+.invite-avatar-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #7a3b3b;
+  margin-left: -8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.invite-avatar-btn img { width: 14px; height: 14px; filter: brightness(0) invert(1); }
+
+/* ---------------- 2-column content ---------------- */
+.trip-content {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.trip-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panel-header h2 { font-size: 15px; font-weight: 700; color: #1f1f1f; }
+
+.panel-menu-btn {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+
+.itinerary-range { font-size: 12px; color: #999; }
+
+/* ---------------- Place to visit / simple place list ---------------- */
+.simple-place-list, .place-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.simple-place-card, .itinerary-place-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #f7f6f5;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.place-number {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #7a3b3b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.place-card-body { flex: 1; }
+
+.place-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.place-card-actions-inline {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.inline-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px dashed #ccc;
+  border-radius: 14px;
+  background-color: #fff;
+  color: #888;
+  font-size: 11px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.inline-action-btn:hover { border-color: #7a3b3b; color: #7a3b3b; }
+.inline-action-btn.filled { border-style: solid; color: #333; }
+
+.place-card-menu-btn {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---------------- Itinerary days ---------------- */
+.day-block {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.day-block:last-child { margin-bottom: 0; }
+
+.day-block.selected { border-color: #7a3b3b; }
+
+.day-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background-color: #faf7f7;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.day-toggle-btn img { width: 12px; height: 12px; transition: transform 0.15s; }
+.day-toggle-btn.collapsed img { transform: rotate(-90deg); }
+
+.day-toggle-btn .day-date { color: #999; font-weight: 400; font-size: 12px; margin-left: 4px; }
+
+.day-body { padding: 12px 14px; }
+.day-body.collapsed { display: none; }
+
+.add-place-btn {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #666;
+  font-size: 13px;
+  padding: 10px;
+  cursor: pointer;
+}
+.add-place-btn:hover { border-color: #7a3b3b; color: #7a3b3b; }
+
+/* ---------------- Budgeting ---------------- */
+.add-expense-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.add-expense-form input {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  flex: 1;
+  min-width: 120px;
+}
+.expense-form-actions { display: flex; gap: 6px; }
+
+.expense-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f7f6f5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.expense-total-row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ---------------- Choose place panel (cột phải) ---------------- */
+.choose-place-panel { position: sticky; top: 16px; }
+
+.choose-place-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.choose-place-toolbar .search-box { flex: 1; }
+
+.filter-dropdown { position: relative; }
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter-toggle-btn img { width: 10px; height: 10px; }
+
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  min-width: 120px;
+  z-index: 20;
+  overflow: hidden;
+}
+.filter-menu.hidden { display: none; }
+
+.filter-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter-option:hover, .filter-option.active { background-color: #f2f2f2; color: #7a3b3b; font-weight: 600; }
+
+.selected-day-hint {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+.selected-day-hint strong { color: #7a3b3b; }
+
+.choose-place-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.choose-place-card {
+  display: flex;
+  gap: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.choose-place-card img.thumb {
+  width: 70px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.choose-place-card .info { flex: 1; }
+.choose-place-card .cp-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.choose-place-card .cp-rating { color: #e0a72c; font-size: 11px; margin-bottom: 2px; }
+.choose-place-card .cp-address { font-size: 11px; color: #888; }
+
+.choose-place-card .add-btn {
+  align-self: center;
+  border: none;
+  background-color: #3b6fe0;
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.choose-place-card .add-btn:hover { background-color: #2f5bc4; }
+.choose-place-card .add-btn.added { background-color: #4caf50; }
+
+/* ---------------- Buttons chung ---------------- */
+.btn-primary-sm {
+  border: none;
+  background-color: #3b6fe0;
+  color: #fff;
+  border-radius: 18px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary-sm:hover { background-color: #2f5bc4; }
+
+.btn-secondary-sm {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #444;
+  border-radius: 18px;
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn-secondary-sm:hover { background-color: #f5f5f5; }
+
+/* ---------------- Modal: Share Trip ---------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal.hidden { display: none; }
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  width: 380px;
+  max-width: 90%;
+}
+
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.modal-header h3 { font-size: 16px; font-weight: 700; }
+.modal-close-btn { border: none; background: transparent; font-size: 20px; cursor: pointer; }
+
+.share-link-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.share-link-row input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  background-color: #f7f7f7;
+}
+
+.invite-input-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.invite-input-row input[type="email"] {
+  flex: 1;
+  min-width: 140px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 13px;
+}
+.invite-input-row select { border: 1px solid #ddd; border-radius: 8px; padding: 9px 6px; font-size: 12px; }
+
+.field-error { color: #c62828; font-size: 12px; margin-top: 8px; }
+
+/* ---------------- Footer (đồng bộ) ---------------- */
+.site-footer {
+  background-color: #7a3b3b;
+  color: #f5eaea;
+  padding: 48px 40px 24px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+.footer-col h3, .footer-col h4 { margin-bottom: 14px; font-weight: 700; }
+.footer-col a { display: block; font-size: 13px; color: #f0dede; margin-bottom: 8px; }
+.footer-col a:hover { text-decoration: underline; }
+.footer-contact { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 8px; }
+.footer-contact img { width: 14px; height: 14px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 12px; }
+.footer-socials img { width: 18px; height: 18px; }
+.footer-bottom {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 24px;
+  padding-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  color: #ecdcdc;
+}
+
+/* ---------------- Quyền: ẩn control khi không có quyền edit ---------------- */
+.edit-only.hidden { display: none !important; }
+
+/* ---------------- Checklist (trong mỗi itinerary place card) ---------------- */
+.checklist-box {
+  margin-top: 8px;
+  border-top: 1px dashed #ddd;
+  padding-top: 8px;
+}
+.checklist-box.hidden { display: none; }
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.checklist-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.checklist-row input[type="checkbox"] { accent-color: #7a3b3b; }
+.checklist-row span.done { text-decoration: line-through; color: #999; }
+
+.checklist-row .checklist-delete-btn {
+  border: none;
+  background: transparent;
+  color: #c62828;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 4px;
+}
+
+.checklist-add-row {
+  display: flex;
+  gap: 6px;
+}
+.checklist-add-row input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+.checklist-add-row .checklist-add-btn {
+  border: none;
+  background-color: #3b6fe0;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.checklist-add-row .checklist-add-btn:hover { background-color: #2f5bc4; }
+
+/* ---------------- Choose Place: type + price (bổ sung) ---------------- */
+.choose-place-card .cp-type {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 2px;
+}
+.choose-place-card .cp-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .trip-content { grid-template-columns: 1fr; }
+  .choose-place-panel { position: static; }
+  .site-footer { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .site-header { flex-wrap: wrap; gap: 12px; }
+  .main-nav { order: 3; width: 100%; justify-content: center; }
+  .trip-main { padding: 16px 16px 50px; }
+  .cover-image { height: 200px; }
+  .trip-info-overlay { left: 10px; bottom: 10px; max-width: 200px; padding: 10px 12px; }
+  .trip-members-overlay { right: 10px; bottom: 10px; }
+  .site-footer { grid-template-columns: 1fr; }
+}

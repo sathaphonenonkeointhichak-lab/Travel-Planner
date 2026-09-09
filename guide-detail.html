@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner - Guide Detail</title>
+<link rel="stylesheet" href="guide-detail.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Travel Planner</div>
+  <nav class="main-nav">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="explore.html" class="nav-link">Explore</a>
+    <a href="travel-guides.html" class="nav-link active">Travel Guides</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search">
+      <button id="searchBtn" type="button" aria-label="Search"><img src="images/icon-search.png" alt=""></button>
+    </div>
+    <button id="profileBtn" class="profile-btn" type="button" aria-label="Profile">
+      <img src="images/icon-profile.png" alt="">
+    </button>
+  </div>
+</header>
+
+<section class="guide-cover-banner">
+  <img id="guideCover" src="" alt="">
+  <div class="guide-cover-overlay">
+    <h1 id="guideTitleLarge" class="guide-title-large"></h1>
+    <p id="guideShortInfo" class="guide-short-info"></p>
+  </div>
+</section>
+
+<main>
+
+  <button id="backBtn" class="back-btn" type="button" onclick="window.location.href='travel-guides.html'">
+    <img src="images/icon-back.png" alt=""> Back
+  </button>
+
+  <div class="author-row">
+    <img id="authorAvatar" class="author-avatar" src="" alt="">
+    <div class="author-info">
+      <div id="authorName" class="author-name"></div>
+      <div class="author-meta">
+        <span id="authorDate"></span>
+        <span class="dot">&middot;</span>
+        <span id="guideViews"></span> views
+        <span class="dot">&middot;</span>
+        <span id="guideLikesCount"></span> likes
+        <span class="dot">&middot;</span>
+        <span id="commentCountLabel"></span> comments
+      </div>
+    </div>
+    <button id="followBtn" class="follow-btn hidden" type="button">Follow</button>
+    <div class="guide-action-group">
+      <button id="guideLikeBtnMain" class="guide-like-btn" type="button">
+        <img src="images/icon-heart.png" alt=""> Like
+      </button>
+      <button id="shareGuideBtn" class="guide-share-btn" type="button">
+        <img src="images/icon-share.png" alt=""> Share
+      </button>
+      <button id="editGuideToggleBtn" class="btn-secondary-sm owner-only hidden" type="button">Edit</button>
+    </div>
+  </div>
+
+  <div id="editGuideArea" class="edit-guide-area hidden">
+    <input type="text" id="editTitleInput" class="edit-title-input" placeholder="Tên guide">
+    <textarea id="editDescriptionInput" class="edit-description-input" rows="3" placeholder="Mô tả"></textarea>
+    <div class="edit-guide-actions">
+      <button id="saveGuideEditBtn" class="btn-primary-sm" type="button">Save</button>
+      <button id="cancelGuideEditBtn" class="btn-secondary-sm" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <section class="about-section">
+    <h2 class="section-title">About this guide</h2>
+    <p id="aboutContent" class="about-content"></p>
+  </section>
+
+  <section class="itinerary-section">
+    <div class="itinerary-header-row">
+      <h2 class="section-title">Itinerary</h2>
+      <div class="itinerary-header-actions">
+        <button id="addDayBtn" class="btn-secondary-sm owner-only hidden" type="button">+ Add Day</button>
+        <button id="addToNewTripBtn" class="add-to-new-trip-btn" type="button">+ Add to New Trip</button>
+      </div>
+    </div>
+    <div id="itineraryDaysList"></div>
+  </section>
+
+  <section class="comments-section">
+    <h2 class="section-title">Comments / Ask a Question</h2>
+
+    <div id="writeCommentArea" class="write-comment-area hidden">
+      <textarea id="commentInput" class="comment-textarea" placeholder="Viết bình luận hoặc đặt câu hỏi..." rows="2"></textarea>
+      <button id="submitCommentBtn" class="btn-primary-sm" type="button">Submit</button>
+    </div>
+
+    <div id="loginRequiredCommentMsg" class="login-required hidden">
+      Vui lòng <a href="login.html">đăng nhập</a> để bình luận hoặc đặt câu hỏi.
+    </div>
+
+    <p id="commentError" class="field-error hidden"></p>
+    <div id="commentList" class="comment-list"></div>
+  </section>
+
+</main>
+
+<!-- Modal: Save 1 địa điểm (của Guide) vào Trip của người xem -->
+<div id="saveToTripModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Save to Trip</h3>
+      <button id="closeSaveToTripModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div id="saveTripStep" class="modal-step">
+      <p class="modal-label">Choose a trip:</p>
+      <div id="saveTripListContainer" class="modal-list"></div>
+      <button id="createNewTripFromSaveBtn" class="btn-primary-sm hidden" type="button">+ Create New Trip</button>
+    </div>
+    <div id="saveDayStep" class="modal-step hidden">
+      <p class="modal-label">Choose a day:</p>
+      <div id="saveDayListContainer" class="modal-list"></div>
+      <button id="backToTripStepBtn" class="btn-secondary-sm" type="button">&larr; Back</button>
+    </div>
+    <div id="saveAddedStep" class="modal-step hidden">
+      <p class="added-message">Đã lưu địa điểm vào trip của bạn.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add Place vào 1 Day của Guide (chỉ tác giả) -->
+<div id="addPlaceToGuideModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Add Place to Day</h3>
+      <button id="closeAddPlaceToGuideModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+    <input type="text" id="guidePlaceSearchInput" placeholder="Tìm địa điểm..." class="edit-title-input">
+    <div id="guidePlaceListContainer" class="modal-list"></div>
+  </div>
+</div>
+
+<!-- Modal: Share Guide -->
+<div id="shareGuideModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Share Guide</h3>
+      <button id="closeShareGuideModal" class="modal-close-btn" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="share-link-row">
+      <input type="text" id="guideShareLinkInput" readonly>
+      <button id="copyGuideShareLinkBtn" class="btn-secondary-sm" type="button">Copy link</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col footer-brand">
+    <h3>Travel Planner</h3>
+    <p class="footer-contact"><img src="images/icon-phone.png" alt=""> +8455555555</p>
+    <p class="footer-contact"><img src="images/icon-globe.png" alt=""> www.travelplanner.com</p>
+    <div class="footer-socials">
+      <a href="#"><img src="images/icon-facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/icon-x.png" alt="X"></a>
+      <a href="#"><img src="images/icon-tiktok.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="travel-guides.html">Travel Guides</a>
+    <a href="new-trip.html">Plan a New Trip</a>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="explore.html">Hotel</a>
+    <a href="explore.html">Places</a>
+    <a href="explore.html">Cafe</a>
+    <a href="explore.html">Restaurant</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support &amp; Policy</h4>
+    <a href="#">Help Center</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Travel Planner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="guide-detail.js"></script>
+</body>
+</html>

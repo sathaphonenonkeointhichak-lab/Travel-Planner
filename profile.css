@@ -1,0 +1,365 @@
+/* ==========================================================
+   PROFILE PAGE STYLES - Travel Planner
+   ========================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1f1f1f;
+  background-color: #f7f6f5;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+.hidden { display: none !important; }
+.placeholder-text { color: #888; font-size: 13px; }
+
+/* ---------------- Header (đồng bộ) ---------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+}
+.logo { font-size: 20px; font-weight: 700; }
+.main-nav { display: flex; gap: 32px; }
+.nav-link { font-size: 15px; color: #333; }
+.nav-link:hover { color: #7a3b3b; font-weight: 600; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.search-box { display: flex; align-items: center; background-color: #f2f2f2; border-radius: 20px; padding: 8px 14px; gap: 8px; }
+.search-box input { border: none; background: transparent; outline: none; font-size: 14px; width: 220px; }
+.search-box button { border: none; background: transparent; cursor: pointer; padding: 0; }
+.search-box img { width: 16px; height: 16px; }
+
+.profile-menu-wrapper { position: relative; }
+.profile-btn { border: none; background: transparent; cursor: pointer; padding: 0; }
+.profile-btn img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+
+.profile-header-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  min-width: 150px;
+  z-index: 50;
+  overflow: hidden;
+}
+.profile-header-menu.hidden { display: none; }
+
+.profile-header-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+.profile-header-menu-item:hover { background-color: #f5f5f5; }
+.profile-header-menu-item.logout-item { color: #c62828; }
+
+/* ---------------- Main layout ---------------- */
+.profile-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 32px 60px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------------- Card trái ---------------- */
+.profile-card {
+  background-color: #f2f1f0;
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 14px;
+}
+
+.profile-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.profile-email { font-size: 12px; color: #777; margin-bottom: 18px; }
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 18px;
+}
+
+.profile-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.stat-number { font-size: 15px; font-weight: 700; }
+.stat-label { font-size: 10px; letter-spacing: 0.05em; color: #888; }
+
+.profile-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-edit, .btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: 18px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-edit img, .btn-share img { width: 12px; height: 12px; }
+
+.btn-edit { background-color: #e2ddda; color: #333; }
+.btn-edit:hover { background-color: #d6d0cc; }
+
+.btn-share { background-color: #1f1f1f; color: #fff; }
+.btn-share:hover { background-color: #000; }
+.btn-share img { filter: brightness(0) invert(1); }
+
+/* Edit profile form */
+.edit-profile-form {
+  text-align: left;
+  margin-top: 18px;
+  border-top: 1px solid #e0dcd9;
+  padding-top: 16px;
+}
+.edit-profile-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+}
+.edit-profile-form input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.field-error { color: #c62828; font-size: 12px; margin-bottom: 10px; }
+.edit-form-actions { display: flex; gap: 8px; }
+
+/* ---------------- Card phải ---------------- */
+.profile-content-card {
+  background-color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  background-color: #7a3b3b;
+  padding: 16px 20px;
+}
+
+.profile-tab {
+  border: none;
+  background: transparent;
+  color: #e8d6d6;
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.profile-tab.active { color: #fff; border-bottom-color: #fff; }
+
+.tab-panels { padding: 20px; }
+.tab-panel.hidden { display: none; }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ---------------- Card chung: Trip / Guide / Favorite Guide ---------------- */
+.pf-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pf-card-cover-wrapper { position: relative; cursor: pointer; }
+.pf-card-cover-wrapper img { width: 100%; height: 130px; object-fit: cover; }
+
+.pf-card-menu-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pf-card-body { padding: 10px 12px; }
+.pf-card-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; cursor: pointer; }
+
+.pf-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #888;
+}
+.pf-card-meta img.pf-avatar { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
+
+.pf-card-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+.pf-card-stats img { width: 12px; height: 12px; }
+
+/* ---------------- Menu popup dùng chung (Share/Edit/Delete/Unlike) ---------------- */
+.item-menu-popup {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  min-width: 120px;
+  z-index: 60;
+}
+.item-menu-popup.hidden { display: none; }
+.item-menu-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 9px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.item-menu-option:hover { background-color: #f2f2f2; }
+.item-menu-option.danger { color: #c62828; }
+
+/* ---------------- Modal: Share ---------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 340px;
+  max-width: 90%;
+}
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.modal-header h3 { font-size: 16px; font-weight: 700; }
+.modal-close-btn { border: none; background: transparent; font-size: 20px; cursor: pointer; }
+.share-link-row { display: flex; gap: 8px; }
+.share-link-row input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  background-color: #f7f7f7;
+}
+
+.btn-primary-sm {
+  border: none;
+  background-color: #3b6fe0;
+  color: #fff;
+  border-radius: 18px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary-sm:hover { background-color: #2f5bc4; }
+
+.btn-secondary-sm {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #444;
+  border-radius: 18px;
+  padding: 9px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-secondary-sm:hover { background-color: #f5f5f5; }
+
+/* ---------------- Footer (đồng bộ) ---------------- */
+.site-footer {
+  background-color: #7a3b3b;
+  color: #f5eaea;
+  padding: 48px 40px 24px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+.footer-col h3, .footer-col h4 { margin-bottom: 14px; font-weight: 700; }
+.footer-col a { display: block; font-size: 13px; color: #f0dede; margin-bottom: 8px; }
+.footer-col a:hover { text-decoration: underline; }
+.footer-contact { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 8px; }
+.footer-contact img { width: 14px; height: 14px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 12px; }
+.footer-socials img { width: 18px; height: 18px; }
+.footer-bottom {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 24px;
+  padding-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  color: #ecdcdc;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+  .profile-layout { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .site-header { flex-wrap: wrap; gap: 12px; }
+  .main-nav { order: 3; width: 100%; justify-content: center; }
+  .profile-main { padding: 16px 16px 50px; }
+  .profile-tabs { gap: 16px; flex-wrap: wrap; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .site-footer { grid-template-columns: 1fr; }
+}
